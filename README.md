@@ -10,13 +10,13 @@ This project helps to detect lane lines in images using Python and OpenCV and th
 ---
 
 ### Table of Contents
-  1. Libraries and Packages
-  2. Finding Lane Lines
-     - Modifying `draw_lines()` Function
-  3. Potential Shortcomings with Current Pipeline
-  4. Possible Improvements to Pipeline
-  5. Conclusion
-  6. License
+  1. [Libraries and Packages](#1-libraries-and-packages)
+  2. [Finding Lane Lines](#2-finding-lane-lines)
+     - [Modifying `draw_lines()` Function](#modifying-draw_lines-function)
+  3. [Potential Shortcomings with Current Pipeline](#3-potential-shortcomings-with-current-pipeline)
+  4. [Possible Improvements to Pipeline](#4-possible-improvements-to-pipeline)
+  5. [Conclusion](#5-conclusion)
+  6. [License](#6-license)
 
 ---
 
