@@ -4,23 +4,26 @@
 ---
 
 **Finding Lane Lines on the Road**
+
 This project helps to detect lane lines in images using Python and OpenCV and then applying it for videos as an end goal.
 
 ---
 
-### Table of contents
-**1. Finding Lane Lines**
-   - Modifying `draw_lines()` Function
-
-**2. Potential Shortcomings with Current Pipeline**
-
-**3. Possible Improvements to Pipeline**
-
-**4. Conclusion**
+### Table of Contents
+  1. Libraries and Packages
+  2. Finding Lane Lines
+     - Modifying `draw_lines()` Function
+  3. Potential Shortcomings with Current Pipeline
+  4. Possible Improvements to Pipeline
+  5. Conclusion
+  6. License
 
 ---
 
-### 1. Finding Lane Lines
+### 1. Libraries and Packages
+The following libraries and packages have been used in this project: **`scipy`**, **`matplotlib.pyplot`**, **`matplotlib.image`**, **`numpy`**, **`cv2`**, **`sklearn.linear_model`**, **`sklearn.preprocessing`**, **`sklearn.pipeline`**, **`moviepy.editor`**, and **`IPython.display`**.
+
+### 2. Finding Lane Lines
 
 First of all I started using the simple methods for making a pipeline, as described in the course. The steps were as following:
   
@@ -98,17 +101,17 @@ In order to draw a single line on the left and right lanes, I modified the `draw
         ```
         `weighted_img()` also could be used instead of `cv2.line()` for adding translucent pipelines to the original image.
 
-### 2. Potential Shortcomings with Current Pipeline
+### 3. Potential Shortcomings with Current Pipeline
 Before improving the lane line detection code, potential shortcomings need to be identified. There are two important shortcoming here:
   1. **Color selection:** The algorithm for color selection is quite simple and it's useless, for instance, when the brightness of the image is high or the contrast is low or there is a light-color object on the road close to the lane line sides, etc.
   2. **Finding the solid left and right lines:** The road isn't always straight and it turns to the left an right. So, _striaght pipeline_ is a wrong assumption. The truth is that a pipeline is actually a curve!
   
-  ### 3. Possible Improvements to Pipeline
+### 4. Possible Improvements to Pipeline
 First step is to _improve the color selection algorithm_ and second step is _estimating the best possible curve line for the pipeline_. For the rest of this section I use `test_images/whiteCarLaneSwitch.jpg` to show result of each step.
 
 <br/>
 <figure>
-    <img src="article/source.jpg" width="460" alt="Combined Image" />
+    <img src="article/whiteCarLaneSwitch_source.jpg" width="460" alt="Combined Image" />
     <figcaption>
         <p></p> 
         <p style="text-align: center;"> <i> The image which is used to show result of each step. </i> </p> 
@@ -170,7 +173,7 @@ The result is as following:
   <tr>
     <td>
         <figure>
-            <img src="article/mask_y.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_mask_y.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> `mask_y`: Yellow color mask </i></p> 
@@ -179,7 +182,7 @@ The result is as following:
     </td>
     <td>
         <figure>
-            <img src="article/mask_w.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_mask_w.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> `mask_w`: White color mask </i></p> 
@@ -190,7 +193,7 @@ The result is as following:
   <tr>
     <td colspan="2">
         <figure>
-            <img src="article/mask_wy.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_mask_wy.jpg" width="380" alt="Combined Image" />
             <figcaption>
             <p></p> 
             <p style="text-align: center;"> <i> `mask_wy`: Mixed mask for both yellow and white </i> </p> 
@@ -220,7 +223,7 @@ You can see the results below:
   <tr>
     <td>
         <figure>
-            <img src="article/region_of_interest.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_region_of_interest.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> `region_of_interest` : The region of interest</i></p> 
@@ -229,7 +232,7 @@ You can see the results below:
     </td>
     <td>
         <figure>
-            <img src="article/region_of_interest_blur.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_region_of_interest_blur.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> `region_of_interest_blur`: The blurred region of interest to reduce the noise</i></p> 
@@ -240,7 +243,7 @@ You can see the results below:
   <tr>
     <td colspan="2">
         <figure>
-            <img src="article/region_of_interest_canny.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_region_of_interest_canny.jpg" width="380" alt="Combined Image" />
             <figcaption>
             <p></p> 
             <p style="text-align: center;"> <i>  `region_of_interest_canny`: Canny edge detected image </i> </p> 
@@ -257,7 +260,7 @@ To simplify, the lane area in canny image is transformed to a rectangle. For thi
   <tr>
     <td>
         <figure>
-            <img src="article/region_of_interest_canny.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_region_of_interest_canny.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> Canny edge detected image</i></p> 
@@ -266,7 +269,7 @@ To simplify, the lane area in canny image is transformed to a rectangle. For thi
     </td>
     <td>
         <figure>
-            <img src="article/img_trans_org2rec.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_trans_org2rec.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> Transforming the lane line area to the rectangle </i></p> 
@@ -283,7 +286,7 @@ Before finding the left and right curved pipelines, I separated the left and rig
   <tr>
     <td colspan="2">
         <figure>
-            <img src="article/img_trans_org2rec.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_trans_org2rec.jpg" width="380" alt="Combined Image" />
             <figcaption>
             <p></p> 
             <p style="text-align: center;"> <i>  Transforming the lane line area to the rectangle </i> </p> 
@@ -294,7 +297,7 @@ Before finding the left and right curved pipelines, I separated the left and rig
   <tr>
     <td>
         <figure>
-            <img src="article/img_left.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_left.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> Used for finding the left curved line</i></p> 
@@ -303,7 +306,7 @@ Before finding the left and right curved pipelines, I separated the left and rig
     </td>
     <td>
         <figure>
-            <img src="article/img_right.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_right.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> Used for finding the right curved line </i></p> 
@@ -320,7 +323,7 @@ You can see these points below:
   <tr>
     <td>
         <figure>
-            <img src="article/img_left_plus_hough_lines.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_left_plus_hough_lines.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> The starting and ending points of Hough Transform lines for the left side </i></p> 
@@ -329,7 +332,7 @@ You can see these points below:
     </td>
     <td>
         <figure>
-            <img src="article/img_right_plus_hough_lines.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_right_plus_hough_lines.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> The starting and ending points of Hough Transform lines for the right side </i></p> 
@@ -352,7 +355,7 @@ The function that is responsible to fit the best line is `find_pipeline`. The po
   <tr>
     <td>
         <figure>
-            <img src="article/calculated_curved_pipelines.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_calculated_curved_pipelines.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> The calculated pipelines </i></p> 
@@ -373,14 +376,14 @@ The function that is responsible to fit the best line is `find_pipeline`. The po
 >
 > The step 6 really makes the changes of curvature smooth.
 
-#### Adding The Green Zone and Transform Back it to the Original Shape
+#### Adding The Green Zone and Retransform it to the Original Shape
 The safe driving area for a car is the area between the pipelines that I call it "Green Zone." Let's fill the area between red pipelines with the green color using `add_green_zone()` function. For implementing this function I used `cv2.fillPoly()` from OpenCV (figure below). Then retransform it to the original perspective using `transform_back_to_origin()`. The results are as following:
 <br/>
 <table style="width:100%; text-align: center;">
   <tr>
     <td>
         <figure>
-            <img src="article/curved_pipelines_with_green_zone.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_curved_pipelines_with_green_zone.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> The calculated pipelines with green zone</i></p> 
@@ -389,7 +392,7 @@ The safe driving area for a car is the area between the pipelines that I call it
     </td>
     <td>
         <figure>
-            <img src="article/img_trans_rec2org.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_img_trans_rec2org.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> Transformed result </i></p> 
@@ -406,7 +409,7 @@ This is a time for adding the pipeline with green zone to the original image. `w
   <tr>
     <td>
         <figure>
-            <img src="article/final.jpg" width="380" alt="Combined Image" />
+            <img src="article/whiteCarLaneSwitch_final.jpg" width="380" alt="Combined Image" />
             <figcaption>
                 <p></p> 
                 <p style="text-align: center;"> <i> The final result </i></p> 
@@ -449,7 +452,73 @@ def find_pipelines_and_green_zone(img):
     return final
 ```
 
-#### Hyperparameters
+#### Test Images
+The result of the other test images are as following:
+
+<table style="width:100%; text-align: center;">
+  <tr>
+    <td>
+        <figure>
+            <img src="article/solidWhiteCurve_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidWhiteCurve.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+    <td>
+        <figure>
+            <img src="article/solidWhiteRight_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidWhiteRight.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <figure>
+            <img src="article/solidYellowCurve_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidYellowCurve.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+    <td>
+        <figure>
+            <img src="article/solidYellowCurve2_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidYellowCurve2.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <figure>
+            <img src="article/solidYellowCurveChal_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidYellowCurveChal.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+    <td>
+        <figure>
+            <img src="article/solidYellowLeft_final.jpg" width="380" alt="Combined Image" />
+            <figcaption>
+                <p></p> 
+                <p style="text-align: center;"> <i> solidYellowLeft.jpg </i></p> 
+            </figcaption>
+        </figure>
+    </td>
+  </tr>
+</table>
+
+#### Tuning the Parameters
 I put the parameters for different parts of this code in one place to tune them conveniently. The final result for these parameters are as following:
 ```python
 # Color in range 
@@ -482,11 +551,16 @@ max_line_gap = 10       # maximum gap in pixels between connectable line segment
 degree = 2
 ```
 
-**These values work for all videos including the challenge video. You can find the output videos in `/test_videos_output` folder.**
+These values has been tuned for all videos including the challenge video.
 
-### 4. Conclusion
+##### You can find the output videos [here](test_videos_output) or watch them online [here](https://www.youtube.com/watch?v=S0_758-sbnc&index=2&list=PLgjxKJEo-VjELoTEKXEjA8Vi7s5xZCzI9).
+
+
+### 5. Conclusion
 Using better approaches for "color selection" and "pipeline estimation" results to a more accurate output. Also using the buffer makes the changes of the pipeline curvature smoother.
 
+### 6. License
+[MIT License](LICENSE).
 
 
 ```python
