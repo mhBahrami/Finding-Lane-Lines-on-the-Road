@@ -550,7 +550,7 @@ degree = 2
 
 These values has been tuned for all videos including the challenge video.
 
-##### You can find the output videos [here](test_videos_output) or watch them online [here](https://www.youtube.com/watch?v=S0_758-sbnc&index=2&list=PLgjxKJEo-VjELoTEKXEjA8Vi7s5xZCzI9).
+##### You can find the output videos [here](test_videos_output) or watch them online [here](https://www.youtube.com/playlist?list=PLgjxKJEo-VjELoTEKXEjA8Vi7s5xZCzI9).
 
 
 ### 5. Conclusion
